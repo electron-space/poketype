@@ -1,6 +1,6 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
-
+import { Input } from '@chakra-ui/react'
 
 const Home: NextPage = () => {
   return (
@@ -12,7 +12,9 @@ const Home: NextPage = () => {
       </Head>
 
       <main>
-          <div className='font-bold text-lg justify-content: flex place-content-center'> Hello</div>
+       
+        <Input placeholder='Basic usage' mt='5'/>
+        <div className='main'> Hello</div>
         </main>
     </div>
   )
