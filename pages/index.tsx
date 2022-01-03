@@ -1,4 +1,5 @@
 import type { NextPage } from 'next'
+
 import Head from 'next/head'
 
 
@@ -12,7 +13,7 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <div className='main'> Hello</div>
+      <div className='flex justify-center '> Fun fun</div>
       
       
    
