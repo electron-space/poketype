@@ -1,10 +1,14 @@
 import type { NextPage } from 'next'
+import { Input } from '../src/components/input'
 
 import Head from 'next/head'
 
 
 
 const Home: NextPage = () => {
+  
+  
+
   return (
     <div>
       <Head>
@@ -13,14 +17,13 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <div className='flex justify-center '> Fun fun</div>
+      <Input />
       
       
-   
-        
-        
+
     </div>
   )
 }
 
 export default Home
+
