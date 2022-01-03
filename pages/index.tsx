@@ -1,7 +1,7 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
-import { Input, Box, Center } from '@chakra-ui/react'
-import { HStack } from '@chakra-ui/react'
+
+
 
 const Home: NextPage = () => {
   return (
@@ -12,10 +12,8 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <Box m={2} w={[300,400,500]} >
-        <Center><Input placeholder='Basic usage' mt='5' variant='filled'align-items='right' /></Center>
-        <div className='main'> Hello</div>
-      </Box>
+      <div className='main'> Hello</div>
+      
       
    
         
