@@ -1,22 +1,15 @@
-import React, { useState, useEffect } from 'react';
+import React, { useCallback } from 'react';
 import { Pokemon } from './types';
 
+import usePokemon from './usePokemon';
+
 export const Input = () => {
-	const [filter, setFilter] = useState('');
-	const [allPokemon, setAllPokemon] = useState<Pokemon[]>([]);
+	const { filter, setFilter, pokemon } = usePokemon();
 
-	useEffect(() => {
-		fetch('./pokemon.json')
-			.then((res) => res.json())
-			.then((pokemon: Pokemon[]) => setAllPokemon(pokemon));
-	}, []);
-
-	const lowerCase = filter.toLowerCase();
-	const pokemon = allPokemon
-		.filter(({ name: { english } }) =>
-			english.toLowerCase().includes(lowerCase)
-		)
-		.slice(0, 10);
+	const onSetFilter = useCallback(
+		(event) => setFilter(event.target.value),
+		[setFilter]
+	);
 
 	return (
 		<div>
@@ -32,13 +25,13 @@ export const Input = () => {
                     drop-shadow-xs
                     shadow-inner
                     hover:scale-110
-                    hover:bg-purple-200
+                    hover:bg-blue-200
                     rounded-md w-80
                     transition duration-150'
 				value={filter}
-				onChange={(event) => setFilter(event.target.value)}
+				onChange={onSetFilter}
 			/>
-			<div className='m-4'>
+			<div className='m-4 mt-8 p-8 border-2 border-indigo-300/50 rounded-lg hover:bg-violet-100 drop-shadow-md transition duration-150'>
 				{pokemon.map((pokemon) => (
 					<div key={pokemon.id}>{pokemon.name.english}</div>
 				))}
