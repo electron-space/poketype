@@ -1,5 +1,6 @@
 import React, { useCallback } from 'react';
 import { Pokemon } from './types';
+import Image from 'next/image';
 
 import usePokemon from './usePokemon';
 
@@ -12,7 +13,7 @@ export const Input = () => {
 	);
 
 	return (
-		<div>
+		<main>
 			<input
 				className='
                     mx-auto 
@@ -21,21 +22,34 @@ export const Input = () => {
                     m-4 
                     text-lg
                     border-solid border-2 
-                    bg-gray-100
+                    bg-sky-100
                     drop-shadow-xs
                     shadow-inner
                     hover:scale-110
-                    hover:bg-blue-200
+                    hover:bg-sky-300
                     rounded-md w-80
                     transition duration-150'
 				value={filter}
 				onChange={onSetFilter}
 			/>
-			<div className='m-4 mt-8 p-8 border-2 border-indigo-300/50 rounded-lg hover:bg-violet-100 drop-shadow-md transition duration-150'>
+			<div
+				className='
+					m-4 mt-8 p-8 border-2 border-blue-200/50 rounded-lg
+					hover:bg-sky-100 drop-shadow-lg transition duration-150
+					grid grid-cols-4 gap-10 '>
 				{pokemon.map((pokemon) => (
-					<div key={pokemon.id}>{pokemon.name.english}</div>
+					<>
+						<Image
+							src={`/pokemon/${pokemon.name.english.toLowerCase()}.jpg `}
+							alt='Pokemon'
+							width={500}
+							height={500}
+							priority
+						/>
+						<div key={pokemon.id}>{pokemon.name.english}</div>
+					</>
 				))}
 			</div>
-		</div>
+		</main>
 	);
 };
