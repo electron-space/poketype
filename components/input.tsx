@@ -36,7 +36,9 @@ export const Input = () => {
 				className='
 					m-4 mt-8 p-8 border-2 border-blue-200/50 rounded-lg
 					hover:bg-sky-100 drop-shadow-lg transition duration-150
-					grid grid-cols-4 gap-10 '>
+					grid grid-cols-2 gap-6 sm:grid-cols-6
+					
+					'>
 				{pokemon.map((pokemon) => (
 					<>
 						<Image
@@ -46,7 +48,9 @@ export const Input = () => {
 							height={500}
 							priority
 						/>
-						<div key={pokemon.id}>{pokemon.name.english}</div>
+						<div className='mb-4 mt-4 p-8' key={pokemon.id}>
+							{pokemon.name.english}
+						</div>
 					</>
 				))}
 			</div>
