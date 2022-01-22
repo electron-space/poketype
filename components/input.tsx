@@ -25,19 +25,23 @@ export const Input = () => {
                     bg-sky-100
                     drop-shadow-xs
                     shadow-inner
-                    hover:scale-110
+                    hover:scale-150
                     hover:bg-sky-300
-                    rounded-md w-80
+                    rounded-md md:w-80
                     transition duration-150'
 				value={filter}
 				onChange={onSetFilter}
 			/>
 			<div
 				className='
-					m-4 mt-8 p-8 border-2 border-blue-200/50 rounded-lg
-					hover:bg-sky-100 drop-shadow-lg transition duration-150
-					grid grid-cols-2 gap-6 sm:grid-cols-6
-					
+					m-4 mt-8 p-8 border-2
+					border-blue-200/50 rounded-lg
+					hover:bg-gray-500 
+					relative
+					transition duration-150
+					grid grid-cols-1 gap-4
+					md:grid-cols-2 lg:grid-cols-6 
+									
 					'>
 				{pokemon.map((pokemon) => (
 					<>
@@ -47,9 +51,21 @@ export const Input = () => {
 							width={500}
 							height={500}
 							priority
+							className='border-2'
 						/>
-						<div className='mb-4 mt-4 p-8' key={pokemon.id}>
-							{pokemon.name.english}
+						<div className='mb-4 mt-4 p-8'>
+							<div className='font-bold text-lg ' key={pokemon.id}>
+								{pokemon.name.english}
+							</div>
+							<div className='italic text-m'>{pokemon.type.join(', ')}</div>
+							<div className=' grid grid-rows-2 grid-cols-2 mt-4 '>
+								{Object.keys(pokemon.base).map((k) => (
+									<>
+										<div className='font-bold'>{k}</div>
+										<div>{pokemon.base[k]}</div>
+									</>
+								))}
+							</div>
 						</div>
 					</>
 				))}
