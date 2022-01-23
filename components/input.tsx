@@ -34,9 +34,9 @@ export const Input = () => {
 			/>
 			<div
 				className='
-					m-4 mt-8 p-8 border-2
+					m-4 mt-8 p-8 border-4
 					border-blue-200/50 rounded-lg
-					hover:bg-gray-500 
+					hover:bg-sky-200 
 					relative
 					transition duration-150
 					grid grid-cols-1 gap-4
@@ -51,7 +51,7 @@ export const Input = () => {
 							width={500}
 							height={500}
 							priority
-							className='border-2'
+							className='rounded-lg hover:scale-110 transition duration-150 cursor-pointer '
 						/>
 						<div className='mb-4 mt-4 p-8'>
 							<div className='font-bold text-lg ' key={pokemon.id}>
