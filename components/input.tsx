@@ -1,11 +1,10 @@
 import React, { useCallback } from 'react';
-import { Pokemon } from './types';
-import Image from 'next/image';
 
 import usePokemon from './usePokemon';
+import PokemonCard from './pokemonCard';
 
 export const Input = () => {
-	const { filter, setFilter, pokemon } = usePokemon();
+	const { filter, setFilter, pokemon, selectPokemon, selected } = usePokemon();
 
 	const onSetFilter = useCallback(
 		(event) => setFilter(event.target.value),
@@ -13,7 +12,7 @@ export const Input = () => {
 	);
 
 	return (
-		<main>
+		<div>
 			<input
 				className='
                     mx-auto 
@@ -41,35 +40,18 @@ export const Input = () => {
 					transition duration-150
 					grid grid-cols-1 gap-4
 					md:grid-cols-2 lg:grid-cols-6 
+					bg-gray-200
 									
 					'>
 				{pokemon.map((pokemon) => (
-					<>
-						<Image
-							src={`/pokemon/${pokemon.name.english.toLowerCase()}.jpg `}
-							alt='Pokemon'
-							width={500}
-							height={500}
-							priority
-							className='rounded-lg hover:scale-110 transition duration-150 cursor-pointer '
-						/>
-						<div className='mb-4 mt-4 p-8'>
-							<div className='font-bold text-lg ' key={pokemon.id}>
-								{pokemon.name.english}
-							</div>
-							<div className='italic text-m'>{pokemon.type.join(', ')}</div>
-							<div className=' grid grid-rows-2 grid-cols-2 mt-4 '>
-								{Object.keys(pokemon.base).map((k) => (
-									<>
-										<div className='font-bold'>{k}</div>
-										<div>{pokemon.base[k]}</div>
-									</>
-								))}
-							</div>
-						</div>
-					</>
+					<PokemonCard
+						key={pokemon.id}
+						{...pokemon}
+						selected={selected.has(pokemon.name.english)}
+						onSelected={selectPokemon}
+					/>
 				))}
 			</div>
-		</main>
+		</div>
 	);
 };
